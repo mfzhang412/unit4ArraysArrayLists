@@ -63,17 +63,100 @@ public class ArrayMethods
     {
         int first = values[0];
         int last = values[values.length - 1];
+        int[] newValues = new int[values.length];
         for (int i = 0; i < values.length - 1; i++)
         {
             int num1 = values[i - 1];
             int num2 = values[i + 2];
-            
+            int value = values[i];
+            if (num1 > value)
+            {
+                value = num1;
+            }
+            if (num2 > value)
+            {
+                value = num2;
+            }
+            newValues[i] = value;
+        }
+        newValues[0] = first;
+        newValues[values.length - 1] = last;
+    }
+    
+    public void removeMiddleElement()
+    {
+        if (values.length % 2 == 1)
+        {
+            int[] newValues = new int[values.length - 1];
+            for (int i = 0; i < values.length; i++)
+            {
+                if (i < values.length / 2 + .5)
+                {
+                    newValues[i] = values[i];
+                }
+                else if (i != values.length / 2 + .5)
+                {
+                    newValues[i - 1] = values[i];
+                }
+            }
+        }
+        else
+        {
+            int[] newValues = new int[values.length - 2];
+            for (int i = 0; i < values.length; i++)
+            {
+                if (i < values.length / 2 - 1)
+                {
+                    newValues[i] = values[i];
+                }
+                else if ((i != values.length / 2 + 1) || (i != values.length / 2 - 1))
+                {
+                    newValues[i - 2] = values[i];
+                }
+            }
         }
     }
     
+    public void moveEvenToFront()
+    {
+        int[] newValues = new int[values.length];
+        int[] evenValues = new int[100];
+        int[] oddValues = new int[100];
+        int evenCounter = 0;
+        int oddCounter = 0;
+        int counter = 0;
+        for (int i = 0; i < values.length; i++)
+        {
+            if (i % 2 == 0)
+            {
+                evenValues[counter] = values[i];
+                evenCounter++;
+            }
+            else
+            {
+                oddValues[counter] = values[i];
+                oddCounter++;
+            }
+        }
+        if (values.length % 2 == 0)
+        {
+            for (int i = 0; i < values.length; i++)
+            {
+                if (i < values.length / 2)
+                {
+                    newValues[i] = evenValues[i];
+                }
+                else
+                {
+                    newValues[i] = oddValues[counter];
+                    counter++;
+                }
+            }
+        }
+    }
     
-    
-    
-    
-    
+    public int returnSecondLargest()
+    {
+        int
+    }
 }

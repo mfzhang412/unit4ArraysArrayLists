@@ -110,7 +110,7 @@ public class CharMatrix
     {
         if(grid[row][i] == 'c')
         {
-            count ++;
+            count++;
         }
     }
     

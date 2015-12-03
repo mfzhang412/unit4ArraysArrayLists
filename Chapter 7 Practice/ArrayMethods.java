@@ -154,9 +154,4 @@ public class ArrayMethods
             }
         }
     }
-    
-    public int returnSecondLargest()
-    {
-        int
-    }
 }

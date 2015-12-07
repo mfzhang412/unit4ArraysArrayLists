@@ -64,16 +64,18 @@ public class MagicSquares
             storage[1][row] = total;
         }
         
+        int total = 0;
         for (int row = 0; row < matrix.length; row++)
         {
-            int total += matrix[row][row];
+            total += matrix[row][row];
         }
         storage[2][0] = total;
         storage[2][1] = total; //to fill up the last matrix for the diagonal
         
+        total = 0;
         for (int row = matrix.length; row > 0; row--)
         {
-            int total += matrix[row][row];
+            total += matrix[row][row];
         }
         storage[2][2] = total;
         storage[2][3] = total; // to fill up the last matrix for the diagonal

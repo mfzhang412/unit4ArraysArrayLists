@@ -1,13 +1,8 @@
-//A supermarket wants to reward its best customer of each day, showing the customer’s
-//name on a screen in the supermarket. For that purpose, the store keeps an
-//ArrayList<Customer>. In the Store class, implement methods
-//public void addSale(String customerName, double amount)
-//public String nameOfBestCustomer()
-//to record the sale and return the name of the customer with the largest sale.
-//Write a program that prompts the cashier to enter all prices and names, adds them to
-//a Store object, and displays the best customer’s name. Use a price of 0 as a sentinel.
+
+
 import java.util.Scanner;
 import java.util.ArrayList;
+
 
 public class Store
 {

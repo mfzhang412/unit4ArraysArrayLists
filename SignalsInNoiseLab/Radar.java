@@ -34,7 +34,8 @@ public class Radar
     public Radar(int rows, int cols)
     {
         // initialize the currentScan 2D array and the accumulator 2D array
-        
+        currentScan = new boolean[rows][cols];
+        accumulator = new int[rows][cols];
         
         //
         // !!! add code here !!!
@@ -43,11 +44,14 @@ public class Radar
         
         // randomly set the location of the monster (can be explicity set through the
         //  setMonsterLocation method for the unit test
-        monsterLocationRow = (int)(Math.random() * rows);
-        monsterLocationCol = (int)(Math.random() * cols);
+        ////monsterLocationRow = (int)(Math.random() * rows);
+        ////monsterLocationCol = (int)(Math.random() * cols);
+        monsterLocationRow = 5;
+        monsterLocationCol = 6;
+        
         
         noiseFraction = 0.05;
-        numScans= 0;
+        numScans = 0;
     }
     
     /**

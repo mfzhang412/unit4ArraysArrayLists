@@ -36,19 +36,54 @@ public class Radar
         // initialize the currentScan 2D array and the accumulator 2D array
         currentScan = new boolean[rows][cols];
         accumulator = new int[rows][cols];
-        //
-        // !!! add code here !!!
-        //
         
+        //sets all values of the accumulator's rows and columns to 0
+        for (int i = 0; i < accumulator.length; i++)
+        {
+            for (int j = 0; j < accumulator[0].length; j++)
+            {
+                accumulator[i][j] = 0;
+            }
+        }
         
-        // randomly set the location of the monster (can be explicity set through the
-        //  setMonsterLocation method for the unit test
+        // randomly sets the location of the monster
         monsterLocationRow = (int)(Math.random() * rows);
         monsterLocationCol = (int)(Math.random() * cols);
         
-        
+        //sets the value for noiseFraction and numScans
         noiseFraction = 0.05;
         numScans = 0;
+        
+    }
+    
+    /**
+     * Constructor for objects of class Radar if user chooses to set monster location manually
+     * 
+     * @param   rows    the number of rows in the radar grid
+     * @param   cols    the number of columns in the radar grid
+     */
+    public Radar(int rows, int cols, int userRow, int userCol)
+    {
+        // initialize the currentScan 2D array and the accumulator 2D array
+        currentScan = new boolean[rows][cols];
+        accumulator = new int[rows][cols];
+        
+        //sets all values of the accumulator's rows and columns to 0
+        for (int i = 0; i < accumulator.length; i++)
+        {
+            for (int j = 0; j < accumulator[0].length; j++)
+            {
+                accumulator[i][j] = 0;
+            }
+        }
+        
+        // randomly sets the location of the monster
+        this.setMonsterLocation(userRow, userCol);
+        
+        //sets the value for noiseFraction and numScans
+        noiseFraction = 0.05;
+        numScans = 0;
+        
     }
     
     /**
@@ -57,15 +92,7 @@ public class Radar
      */
     public void scan()
     {
-        // algorithm for performing a scan:
-        //    1. set all cells in the currentScan 2D array to false
-        //    2. set the location of the monster in the currentScan 2D array
-        //    3. inject noise into the grid
-        //    4. update the accumulator 2D array based on the state of the currentScan 2D array
-        //    5. increment the numScans instance variable
-        
-        
-        //
+        //sets all cells in the currentScane 2D array to false
         for (int i = 0; i < currentScan.length; i++)
         {
             for (int j = 0; j < currentScan[0].length; j++)
@@ -73,10 +100,27 @@ public class Radar
                 currentScan[i][j] = false;
             }
         }
-        currentScan[monsterLocationRow][monsterLocationCol] = true;
-        this.injectNoise();
-        //
         
+        //sets the location of the monster in the currentScan 2D array
+        currentScan[monsterLocationRow][monsterLocationCol] = true;
+        
+        //injects the noise
+        this.injectNoise();
+        
+        //updatees the accumulator 2D array based on the state of the currentScan 2D array
+        for (int i = 0; i < accumulator.length; i++)
+        {
+            for (int j = 0; j < accumulator[0].length; j++)
+            {
+                if (currentScan[i][j] == true)
+                {
+                    accumulator[i][j] += 1;
+                }
+            }
+        }
+        
+        //increments numScans each time the scan method is called
+        numScans += 1;
         
     }
 
@@ -174,6 +218,8 @@ public class Radar
         // The noiseFraction instance variable is the probability that a given cell will be
         // detected as a false positive. Use the Math.random method to determine if each cell should be set
         // as a false positive.
+        
+        //sets false positives
         for (int i = 0; i < currentScan.length; i++)
         {
             for (int j = 0; j < currentScan[0].length; j++)
@@ -192,12 +238,7 @@ public class Radar
                 }
             }
         }
-        
-        //
-        // !!! add code here !!!
-        //
-        
-        
+            
     }
     
 }
